@@ -15,24 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\EmeraldVM2\EmeraldVM2.Runtime\opcode.h">
+    <ClInclude Include="instruction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\EmeraldVM2\EmeraldVM2.Runtime\virtual_machine.h">
+    <ClInclude Include="opcode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\EmeraldVM2\EmeraldVM2.Runtime\instruction.h">
+    <ClInclude Include="virtual_machine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\EmeraldVM2\EmeraldVM2.Runtime\virtual_machine.c">
+    <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\EmeraldVM2\EmeraldVM2.Runtime\main.c">
+    <ClCompile Include="opcode.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\EmeraldVM2\EmeraldVM2.Runtime\opcode.c">
+    <ClCompile Include="virtual_machine.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
