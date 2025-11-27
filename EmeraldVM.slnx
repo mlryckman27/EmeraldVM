@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="EmeraldVM/EmeraldVM.vcxproj" Id="04f46f63-327c-4e28-9dd3-71c6c1a700b6" />
+</Solution>
