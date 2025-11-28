@@ -21,11 +21,14 @@
   <ItemGroup>
     <ClInclude Include="instruction.h" />
     <ClInclude Include="opcode.h" />
+    <ClInclude Include="trap_routine.h" />
     <ClInclude Include="virtual_machine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
     <ClCompile Include="opcode.c" />
+    <ClCompile Include="tests.c" />
+    <ClCompile Include="trap_routine.c" />
     <ClCompile Include="virtual_machine.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

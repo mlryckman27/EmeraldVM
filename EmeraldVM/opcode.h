@@ -70,7 +70,6 @@ Instruction decode_jz(VirtualMachine* vm, uint8_t opcode);
 Instruction decode_jnz(VirtualMachine* vm, uint8_t opcode);
 Instruction decode_call(VirtualMachine* vm, uint8_t opcode);
 Instruction decode_ret(VirtualMachine* vm, uint8_t opcode);
-Instruction decode_dbg(VirtualMachine* vm, uint8_t opcode);
 
 // Handle instruction table
 typedef void (*InstructionHandler)(VirtualMachine* vm, Instruction instruction);
@@ -99,7 +98,6 @@ void handle_jz(VirtualMachine* vm, Instruction instruction);
 void handle_jnz(VirtualMachine* vm, Instruction instruction);
 void handle_call(VirtualMachine* vm, Instruction instruction);
 void handle_ret(VirtualMachine* vm, Instruction instruction);
-void handle_dbg(VirtualMachine* vm, Instruction instruction);
 
 extern InstructionDecoder dispatch_instruction_decoder[];
 extern InstructionHandler dispatch_instruction_handler[];

@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include "opcode.h"
 #include "virtual_machine.h"
+#include "trap_routine.h"
 
 // Decode instruction table
 InstructionDecoder dispatch_instruction_decoder[] = {
@@ -30,7 +31,6 @@ InstructionDecoder dispatch_instruction_decoder[] = {
 	decode_jnz, // JNZ
 	decode_call, // CALL
 	decode_ret,  // RET
-	decode_dbg, // DBG
 };
 
 // Handle instruction table
@@ -60,7 +60,6 @@ InstructionHandler dispatch_instruction_handler[] = {
 	handle_jnz, // JNZ
 	handle_call, // CALL
 	handle_ret,  // RET
-	handle_dbg, // DBG
 };
 
 // Each decoder extracts operands as needed and returns an Instruction struct
@@ -317,19 +316,9 @@ Instruction decode_ret(VirtualMachine* vm, uint8_t opcode) {
 	return instr;
 }
 
-Instruction decode_dbg(VirtualMachine* vm, uint8_t opcode) {
-	// OPCODE 0x19
-	// OPERAND 00 00
-	// DBG
-	Instruction instr;
-	instr.opcode = opcode;
-	instr.operand = 0;
-	return instr;
-}
-
 // Each handler implements the logic for its corresponding instruction
 void handle_nop(VirtualMachine* vm, Instruction instruction) {
-
+	// No operation, do nothing
 }
 
 void handle_halt(VirtualMachine* vm, Instruction instruction) {
@@ -338,50 +327,7 @@ void handle_halt(VirtualMachine* vm, Instruction instruction) {
 
 void handle_trap(VirtualMachine* vm, Instruction instruction) {
 	uint16_t trap_number = vm->stack[--vm->sp];
-	// Implement trap routines based on trap_number
-	switch (trap_number)
-	{
-	case 0:
-	{
-		// Example: Print integer from stack
-		int16_t value = sign_int(vm->stack[vm->sp - 1]);
-		printf("%d\n", value);
-		break;
-	}
-	case 1:
-	{
-		// Example: Read integer and push to stack
-		int16_t value;
-		scanf_s("%hd", &value);
-		vm->stack[vm->sp++] = value;
-		break;
-	}
-	case 2:
-	{
-		// Example: print character from stack
-		char ch = (char)vm->stack[vm->sp - 1];
-		printf("%c", ch);
-		break;
-	}
-	case 3:
-	{
-		// Example: read character and push to stack
-		char ch;
-		scanf_s(" %c", &ch, sizeof(ch));
-		vm->stack[vm->sp++] = (uint16_t)ch;
-	}
-	case 4:
-	{
-		// Example: open file
-		// Not implemented
-	}
-	case 5:
-	{
-		vm->sys_registers[2] = 1;
-	}
-	default:
-		break;
-	}
+	dispatch_trap_handler[trap_number](vm);
 }
 
 void handle_load(VirtualMachine* vm, Instruction instruction) {
@@ -508,15 +454,24 @@ void handle_not(VirtualMachine* vm, Instruction instruction) {
 }
 
 void handle_lt(VirtualMachine* vm, Instruction instruction) {
-
+	// top < top - 1
+	int16_t a = vm->stack[--vm->sp];
+	int16_t b = vm->stack[--vm->sp];
+	vm->stack[vm->sp++] = a < b;
 }
 
 void handle_gt(VirtualMachine* vm, Instruction instruction) {
-
+	// top > top - 1
+	int16_t a = vm->stack[--vm->sp];
+	int16_t b = vm->stack[--vm->sp];
+	vm->stack[vm->sp++] = a > b;
 }
 
 void handle_eq(VirtualMachine* vm, Instruction instruction) {
-
+	// top == top - 1
+	int16_t a = vm->stack[--vm->sp];
+	int16_t b = vm->stack[--vm->sp];
+	vm->stack[vm->sp++] = a == b;
 }
 
 void handle_jmp(VirtualMachine* vm, Instruction instruction) {
@@ -552,10 +507,6 @@ void handle_call(VirtualMachine* vm, Instruction instruction) {
 
 void handle_ret(VirtualMachine* vm, Instruction instruction) {
 	vm->pc = vm->call_stack[--vm->csp];
-}
-
-void handle_dbg(VirtualMachine* vm, Instruction instruction) {
-	vm->sys_registers[2] = 1;
 }
 
 // Helper functions
