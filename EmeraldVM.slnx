@@ -3,6 +3,7 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Project Path="EmeraldVM.Assembler/EmeraldVM.Assembler.vcxproj" Id="b326c8f6-e84e-4020-a604-c1f6d27e78ec" />
   <Project Path="EmeraldVM.Tests/EmeraldVM.Tests.vcxproj" Id="005f7992-aca5-4f02-982c-1dbe0fcc9bc4" />
   <Project Path="EmeraldVM/EmeraldVM.vcxproj" Id="04f46f63-327c-4e28-9dd3-71c6c1a700b6" />
 </Solution>
