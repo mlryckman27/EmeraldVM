@@ -15,30 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="instruction.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="opcode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="virtual_machine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="trap_routine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="opcode.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="virtual_machine.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="trap_routine.c">
+    <ClCompile Include="..\EmeraldVM\test.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

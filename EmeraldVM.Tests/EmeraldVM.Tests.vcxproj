@@ -18,23 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="instruction.h" />
-    <ClInclude Include="opcode.h" />
-    <ClInclude Include="trap_routine.h" />
-    <ClInclude Include="virtual_machine.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.c" />
-    <ClCompile Include="opcode.c" />
-    <ClCompile Include="trap_routine.c" />
-    <ClCompile Include="virtual_machine.c" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{04f46f63-327c-4e28-9dd3-71c6c1a700b6}</ProjectGuid>
-    <RootNamespace>EmeraldVM</RootNamespace>
+    <ProjectGuid>{005f7992-aca5-4f02-982c-1dbe0fcc9bc4}</ProjectGuid>
+    <RootNamespace>EmeraldVMTests</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -138,6 +126,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\EmeraldVM\test.c" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -38,9 +38,6 @@ typedef enum {
 	JNZ,
 	CALL,
 	RET,
-
-	// Debug instructions
-	DBG
 } Opcode;
 
 // Decode instruction table

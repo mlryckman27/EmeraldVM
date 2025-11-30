@@ -24,6 +24,11 @@ int main(int argc, char* argv[]) {
 	TRAP,			   // print top of stack as an integer to the terminal
 	PUSH, 0x00, 0x01,  // push 1 onto the stack
 	SUB,			   // sub 1 from value on top of stack
+	PUSH, 0x00, 0x04,
+	TRAP,
+	PUSH, 0x00, 0x03,
+	TRAP,
+	POP,
 	PUSH, 0x00, 0x14,  // push 20 onto stack
 	JNZ,			   // if zero-flag is not set, jump to second instruction in the sub-routine (at address 0x0014)
 	PUSH, 0x00, 0x00,
